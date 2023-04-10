@@ -6,13 +6,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                   GIT_DIFF = sh (
+                   def diff = sh (
                         script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
                     ).split("\n")
-                    echo "GIT_DIFF: ${GIT_DIFF}"
-                    def diff = ${GIT_DIFF}
-                    echo diff.findAll{ it.contains('.md') }
+                    echo diff
 
                 }
 
