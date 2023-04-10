@@ -7,7 +7,8 @@ pipeline {
             steps {
                 sh '''
                     node --version
-                    git diff HEAD\\~1 HEAD
+                    IFS=$'\'  diff_array=\\($\\(git diff HEAD~1 HEAD\\)\\)
+                    echo $diff_array
                 '''
             }
         }
