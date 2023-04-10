@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh '''
                     node --version
-                    IFS=$'\'  diff_array=\\($\\(git diff $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT\\)\\)
+                    IFS=$'\'  git diff $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
                     echo $diff_array
                 '''
             }
