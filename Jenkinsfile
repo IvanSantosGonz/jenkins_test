@@ -7,14 +7,15 @@ pipeline {
             steps {
                 sh '''
                     node --version
-                    IFS=$'\'  git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
+                    IFS=$'\'  diff_array=\\($\\(git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT\\)\\)
+                    echo $diff_array[1]
                     # Print each line of the diff array
                     number=0
                     for line in "${diff_array[@]}"
                     do
-                      if [[ "$line" != *.md ]]
+                      if [[ $line != *.md ]]
                       then
-                        a=1
+                        \\(\\(number++\\)\\)
                       fi
                     done
                     echo $number
