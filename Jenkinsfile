@@ -11,7 +11,7 @@ pipeline {
                         returnStdout: true
                     )
                     def list = diff.split("\n")
-                    println list
+                    println $list
                 }
             }
         }
