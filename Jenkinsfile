@@ -12,7 +12,7 @@ pipeline {
                     )
                     println diff
                     def list = diff.split("\n")
-                    println list.getClass()
+                    println list[1]
                 }
             }
         }
