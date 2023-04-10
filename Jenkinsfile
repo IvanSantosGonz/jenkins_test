@@ -13,7 +13,7 @@ pipeline {
                     println diff
                     def list = diff.split("\n") as List
                     println list
-                    list.removeAll { it.endsWith('*md') }
+                    list.removeAll { it.endsWith('.md') }
                     println list
                 }
             }
