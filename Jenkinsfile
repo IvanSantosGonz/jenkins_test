@@ -28,5 +28,20 @@ pipeline {
                 }
             }
         }
+        stage('stage 3') {
+            when {
+                anyOf {
+                    expression {
+                        return isSourceCodeModified;
+                    }
+                }
+            }
+            steps {
+                script {
+                    println "In stage 3"
+                    println isSourceCodeModified
+                }
+            }
+        }
     }
 }
