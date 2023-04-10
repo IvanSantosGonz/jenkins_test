@@ -6,6 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'node --version'
+                IFS=$'\n' diff_array=($(git diff HEAD~1 HEAD))
             }
         }
     }
