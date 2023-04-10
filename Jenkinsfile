@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh '''
                     node --version
-                    IFS=$'\'  git diff --only-names $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
+                    IFS=$'\'  git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
                     echo $diff_array
                 '''
             }
