@@ -12,7 +12,7 @@ pipeline {
                     number=0
                     for line in "${diff_array[@]}"
                     do
-                      if [[ $line != *.md ]]
+                      if [[ "$line" != *.md ]]
                       then
                         a=1
                       fi
