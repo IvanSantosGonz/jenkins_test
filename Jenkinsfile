@@ -1,15 +1,12 @@
 pipeline {
     agent {
-        node {
-            label 'built-in'
-        }
+        docker { image 'node:16.13.1-alpine' }
     }
     stages {
-          stage('test') {
+        stage('Test') {
             steps {
-
-                sh "echo 'pepe'"
+                sh 'node --version'
             }
-          }
+        }
     }
 }
