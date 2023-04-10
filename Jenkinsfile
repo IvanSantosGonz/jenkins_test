@@ -14,9 +14,10 @@ pipeline {
                     do
                       if [[ $line != *.md ]]
                       then
-                        number=$(expr $number + 1)
+                        number=expr $number + 1
                       fi
                     done
+                    echo $number
                 '''
             }
         }
