@@ -12,7 +12,9 @@ pipeline {
                     )
                     println diff
                     def list = diff.split("\n") as List
-                    println list.getClass()
+                    println list
+                    def noDocumentFiles = list.removeAll("*.md")
+                    println noDocumentFiles
                 }
             }
         }
