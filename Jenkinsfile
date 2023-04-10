@@ -9,8 +9,10 @@ pipeline {
             when {
                 branch 'master'
             }
-            sh "echo 'pepe'"
+            steps {
 
+                sh "echo 'pepe'"
+            }
           }
     }
 }
