@@ -34,8 +34,8 @@ pipeline {
                     expression {
                         return isSourceCodeModified;
                     }
+                    triggeredBy cause: 'UserIdCause'
                 }
-                triggeredBy cause: 'UserIdCause'
             }
             steps {
                 script {
