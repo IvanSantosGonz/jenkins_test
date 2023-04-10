@@ -10,6 +10,7 @@ pipeline {
                         script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
                     )
+                    println diff
                     def list = diff.split("\n")
                     println list.getClass()
                 }
