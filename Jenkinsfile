@@ -6,9 +6,6 @@ pipeline {
     }
     stages {
           stage('test') {
-            when {
-                branch 'main'
-            }
             steps {
 
                 sh "echo 'pepe'"
