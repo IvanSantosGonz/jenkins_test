@@ -15,7 +15,7 @@ pipeline {
                     println diff
                     diff.removeAll { it.endsWith('.md') }
                     println diff
-                    def haveBeenSourceCodeModified = diff.size() > 0
+                    haveBeenSourceCodeModified = diff.size() > 0
                     println haveBeenSourceCodeModified
                 }
             }
