@@ -17,6 +17,7 @@ pipeline {
                     println list
                     def result = list.size() > 0
                     println result
+
                 }
             }
         }
