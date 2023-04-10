@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh '''
                     node --version
-                    git diff HEAD~1 HEAD
+                    git diff HEAD\\~1 HEAD
                 '''
             }
         }
