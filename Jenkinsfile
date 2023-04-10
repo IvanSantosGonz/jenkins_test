@@ -15,6 +15,8 @@ pipeline {
                     println list
                     list.removeAll { it.endsWith('.md') }
                     println list
+                    def result = list.size() > 0
+                    println result
                 }
             }
         }
