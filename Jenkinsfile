@@ -9,7 +9,7 @@ pipeline {
                     node --version
                     IFS=$'\'  git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
                     # Print each line of the diff array
-                    number = 0
+                    number=0
                     for line in "${diff_array[@]}"
                     do
                       if [[ $line != *.md ]]
