@@ -6,11 +6,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                   GIT_COMMIT_EMAIL = sh (
-                        script: 'git --no-pager show -s --format=\'%ae\'',
+                   GIT_DIFF = sh (
+                        script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
                     ).trim()
-                    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+                    echo "GIT_DIFF: ${GIT_DIFF}"
                 }
                 sh '''
                     node --version
