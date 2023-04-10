@@ -13,8 +13,8 @@ pipeline {
                     println diff
                     def list = diff.split("\n") as List
                     println list
-                    def noDocumentFiles = list.removeAll("*.md")
-                    println noDocumentFiles
+                    list.removeAll { it.endsWith('*md') }
+                    println list
                 }
             }
         }
