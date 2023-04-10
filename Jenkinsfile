@@ -11,8 +11,8 @@ pipeline {
                         returnStdout: true
                     )
                     println diff
-                    def list = diff.split("\n")
-                    println list[1]
+                    def list = diff.split("\n") as String[]
+                    println list.getClass()
                 }
             }
         }
