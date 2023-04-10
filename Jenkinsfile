@@ -9,7 +9,7 @@ pipeline {
                    GIT_DIFF = sh (
                         script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
-                    ).split("\n").removeAll("*.md")
+                    ).split("\n").removeAll {it -> it.contains("*.md")}
                     echo "GIT_DIFF: ${GIT_DIFF}"
                 }
 
