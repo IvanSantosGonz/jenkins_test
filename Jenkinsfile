@@ -1,4 +1,4 @@
-def haveBeenSourceCodeModified = false
+def isSourceCodeModified = true
 
 pipeline {
     agent {
@@ -15,8 +15,8 @@ pipeline {
                     println diff
                     diff.removeAll { it.endsWith('.md') }
                     println diff
-                    haveBeenSourceCodeModified = diff.size() > 0
-                    println haveBeenSourceCodeModified
+                    isSourceCodeModified = diff.size() > 0
+                    println isSourceCodeModified
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     println "In stage 2"
-                    println haveBeenSourceCodeModified
+                    println isSourceCodeModified
                 }
             }
         }
