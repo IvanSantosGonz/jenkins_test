@@ -8,7 +8,15 @@ pipeline {
                 sh '''
                     node --version
                     IFS=$'\'  git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
-                    echo $diff_array
+                    # Print each line of the diff array
+                    number = 0
+                    for line in "${diff_array[@]}"
+                    do
+                      if [[ $line != *.md ]]
+                      then
+                        number=$(expr $number + 1)
+                      fi
+                    done
                 '''
             }
         }
