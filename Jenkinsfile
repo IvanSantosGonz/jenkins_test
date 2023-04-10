@@ -14,7 +14,7 @@ pipeline {
                     do
                       if [[ $line != *.md ]]
                       then
-                        let "number+=1"
+                        let "number++"
                       fi
                     done
                     echo $number
