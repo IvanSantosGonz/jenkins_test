@@ -35,10 +35,26 @@ pipeline {
                         return isSourceCodeModified;
                     }
                 }
+                triggeredBy cause: 'UserIdCause'
             }
             steps {
                 script {
                     println "In stage 3"
+                    println isSourceCodeModified
+                }
+            }
+        }
+         stage('stage 4') {
+            when {
+                anyOf {
+                    expression {
+                        return isSourceCodeModified;
+                    }
+                }
+            }
+            steps {
+                script {
+                    println "In stage 4"
                     println isSourceCodeModified
                 }
             }
