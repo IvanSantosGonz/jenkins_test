@@ -8,7 +8,7 @@ pipeline {
                 sh '''
                     node --version
                     IFS=$'\n'
-                    diff_array=$\\(git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT\\)
+                    diff_array=git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
                     echo $diff_array[1]
                     # Print each line of the diff array
                     number=0
