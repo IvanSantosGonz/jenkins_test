@@ -9,25 +9,10 @@ pipeline {
                    GIT_DIFF = sh (
                         script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
-                    ).trim()
+                    )
                     echo "GIT_DIFF: ${GIT_DIFF}"
                 }
-                sh '''
-                    node --version
-                    IFS=$'\n'
-                    git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT
-                    echo $diff_array[1]
-                    # Print each line of the diff array
-                    number=0
-                    for line in "${diff_array[@]}"
-                    do
-                      if [[ $line != *.md ]]
-                      then
-                        \\(\\(number++\\)\\)
-                      fi
-                    done
-                    echo $number
-                '''
+
             }
         }
     }
