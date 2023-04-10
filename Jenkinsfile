@@ -11,8 +11,9 @@ pipeline {
                         returnStdout: true
                     ).split("\n")
                     echo "GIT_DIFF: ${GIT_DIFF}"
-                    def noDocumentFiles = ${GIT_DIFF}.findAll{ it.contains('.md') }
-                    echo noDocumentFiles
+                    def diff = ${GIT_DIFF}
+                    echo diff.findAll{ it.contains('.md') }
+
                 }
 
             }
