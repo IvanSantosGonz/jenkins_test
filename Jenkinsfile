@@ -5,8 +5,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'IFS=$"\n" diff_array=\($\(git diff HEAD~1 HEAD\)\)'
+                sh '''
+                    node --version
+                    IFS=$'\'  diff_array=($(git diff HEAD~1 HEAD))
+                '''
             }
         }
     }
