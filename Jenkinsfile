@@ -11,7 +11,7 @@ pipeline {
                    def diff = sh (
                         script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
                         returnStdout: true
-                    )split("\n") as List
+                    ).split("\n") as List
                     println diff
                     diff.removeAll { it.endsWith('.md') }
                     println diff
