@@ -8,8 +8,7 @@ def isSourceCodeModified2() {
     println diff
     diff.removeAll { it.endsWith('.md') }
     println diff
-    def isSourceCodeModified = diff.size() > 0
-    return isSourceCodeModified
+    return diff.size() > 0
 }
 
 pipeline {
@@ -20,6 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
+                    isSourceCodeModified2()
                 }
             }
         }
