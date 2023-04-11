@@ -58,7 +58,7 @@ pipeline {
             steps {
                 script {
                     println "In stage 4"
-                    println isSourceCodeModified()
+                    println isSourceCodeModified2()
                 }
             }
         }
