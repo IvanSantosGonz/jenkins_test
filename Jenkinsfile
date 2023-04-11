@@ -8,9 +8,7 @@ def isSourceCodeModified2() {
     println diff
     diff.removeAll { it.endsWith('.md') }
     println diff
-    isSourceCodeModified = diff.size() > 0
-    println isSourceCodeModified
-    return isSourceCodeModified
+    return diff.size() > 0
 }
 
 pipeline {
@@ -21,7 +19,6 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    isSourceCodeModified = isSourceCodeModified2()
                 }
             }
         }
@@ -29,7 +26,7 @@ pipeline {
             steps {
                 script {
                     println "In stage 2"
-                    println isSourceCodeModified
+                    println isSourceCodeModified2()
                 }
             }
         }
@@ -45,7 +42,7 @@ pipeline {
             steps {
                 script {
                     println "In stage 3"
-                    println isSourceCodeModified
+                    println isSourceCodeModified2()
                 }
             }
         }
@@ -53,14 +50,14 @@ pipeline {
             when {
                 anyOf {
                     expression {
-                        return isSourceCodeModified;
+                        return isSourceCodeModified2();
                     }
                 }
             }
             steps {
                 script {
                     println "In stage 4"
-                    println isSourceCodeModified
+                    println isSourceCodeModified()
                 }
             }
         }
