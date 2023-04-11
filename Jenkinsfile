@@ -8,7 +8,8 @@ def isSourceCodeModified2() {
     println diff
     diff.removeAll { it.endsWith('.md') }
     println diff
-    return diff.size() > 0
+    def isSourceCodeModified = diff.size() > 0
+    return isSourceCodeModified
 }
 
 pipeline {
