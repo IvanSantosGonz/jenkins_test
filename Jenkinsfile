@@ -1,5 +1,18 @@
 def isSourceCodeModified = true
 
+def isSourceCodeModified2() {
+    def diff = sh(
+            script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
+            returnStdout: true
+    ).split("\n") as List
+    println diff
+    diff.removeAll { it.endsWith('.md') }
+    println diff
+    isSourceCodeModified = diff.size() > 0
+    println isSourceCodeModified
+    return isSourceCodeModified
+}
+
 pipeline {
     agent {
         docker { image 'tarampampam/node:17-alpine' }
@@ -8,15 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                   def diff = sh (
-                        script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT',
-                        returnStdout: true
-                    ).split("\n") as List
-                    println diff
-                    diff.removeAll { it.endsWith('.md') }
-                    println diff
-                    isSourceCodeModified = diff.size() > 0
-                    println isSourceCodeModified
+                    isSourceCodeModified = isSourceCodeModified2()
                 }
             }
         }
@@ -44,7 +49,7 @@ pipeline {
                 }
             }
         }
-         stage('stage 4') {
+        stage('stage 4') {
             when {
                 anyOf {
                     expression {
